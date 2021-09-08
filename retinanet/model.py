@@ -13,7 +13,8 @@ model_urls = {
     'resnet50': 'https://download.pytorch.org/models/resnet50-19c8e357.pth',
     'resnet101': 'https://download.pytorch.org/models/resnet101-5d3b4d8f.pth',
     'resnet152': 'https://download.pytorch.org/models/resnet152-b121ed2d.pth',
-    'wide_resnet28_10': 'https://storage.cloud.google.com/kubeflow-price-recognition-dev/datalake/dev/totem_ml/custom_train/models/sam/totem_wresnet28x10_sam.pt',
+    #'wide_resnet28_10': 'https://storage.cloud.google.com/kubeflow-price-recognition-dev/datalake/dev/totem_ml/custom_train/models/sam/totem_wresnet28x10_sam.pt',
+    'wide_resnet28_10': 'https://storage.cloud.google.com/kubeflow-price-recognition-dev/datalake/dev/totem_ml/custom_train/models/sam/totemsvhn_wresnet28x10_sam.pt',
     'wide_resnet50_2': 'https://download.pytorch.org/models/wide_resnet50_2-95faca4d.pth',
     'wide_resnet101_2': 'https://download.pytorch.org/models/wide_resnet101_2-32ee1156.pth'
 }
