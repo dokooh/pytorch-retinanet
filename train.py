@@ -76,6 +76,8 @@ def main(args=None):
     # Create the model
     if  depth == 18:
         retinanet = resnet18(num_classes=dataset_train.num_classes(), pretrained=True)
+    elif depth == 28: #WideResnet
+        retinanet = wide_resnet28_10(num_classes=dataset_train.num_classes(), pretrained=False)            
     elif  depth == 34:
         retinanet = resnet34(num_classes=dataset_train.num_classes(), pretrained=True)
     elif  depth == 50:
@@ -84,9 +86,6 @@ def main(args=None):
         retinanet = resnet101(num_classes=dataset_train.num_classes(), pretrained=True)
     elif  depth == 152:
         retinanet = resnet152(num_classes=dataset_train.num_classes(), pretrained=True)
-    #WideResnet
-    if  depth == 28:
-        retinanet = wide_resnet28_10(num_classes=dataset_train.num_classes(), pretrained=False)
     else:
         raise ValueError('Unsupported model depth, must be one of 18, [28], 34, 50, 101, 152')
         
