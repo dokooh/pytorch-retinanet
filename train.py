@@ -29,7 +29,7 @@ def main(args=None):
     parser.add_argument('--csv_classes', help='Path to file containing class list (see readme)')
     parser.add_argument('--csv_val', help='Path to file containing validation annotations (optional, see readme)')
 
-    parser.add_argument('--depth', help='Resnet depth, must be one of 18, Wide[28], 34, 50, 101, 152', type=int, default=28) #changed the default for experimentation
+    parser.add_argument('--depth', help='Resnet depth, must be one of 18, 28 [Wide], 34, 50, 101, 152', type=int, default=28)
     parser.add_argument('--epochs', help='Number of epochs', type=int, default=100)
 
     parser = parser.parse_args(args)
@@ -76,7 +76,7 @@ def main(args=None):
     # Create the model
     if  depth == 18:
         retinanet = resnet18(num_classes=dataset_train.num_classes(), pretrained=True)
-    elif depth == 28: #WideResnet
+    elif depth == 28: # WideResnet
         retinanet = wide_resnet28_10(num_classes=dataset_train.num_classes(), pretrained=False)            
     elif  depth == 34:
         retinanet = resnet34(num_classes=dataset_train.num_classes(), pretrained=True)
@@ -88,7 +88,7 @@ def main(args=None):
         retinanet = resnet152(num_classes=dataset_train.num_classes(), pretrained=True)
     else:
         raise ValueError('Unsupported model depth, must be one of 18, [28], 34, 50, 101, 152')
-        
+   
     use_gpu = True
 
     if use_gpu:
