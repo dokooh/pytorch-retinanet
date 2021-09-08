@@ -13,7 +13,7 @@ model_urls = {
     'resnet50': 'https://download.pytorch.org/models/resnet50-19c8e357.pth',
     'resnet101': 'https://download.pytorch.org/models/resnet101-5d3b4d8f.pth',
     'resnet152': 'https://download.pytorch.org/models/resnet152-b121ed2d.pth',
-    'wide_resnet28_10': 'https://e.pcloud.link/publink/show?code=XZA8y5Z45Rj0oHylPVHfy0I2Vf22m2qNyBX',
+    'wide_resnet28_10': 'https://5a56ae8e93abf0b6-dot-europe-west1.notebooks.googleusercontent.com/lab/tree/svhn_wresnet28x10_sam.pt',
     'wide_resnet50_2': 'https://download.pytorch.org/models/wide_resnet50_2-95faca4d.pth',
     'wide_resnet101_2': 'https://download.pytorch.org/models/wide_resnet101_2-32ee1156.pth'
 }
