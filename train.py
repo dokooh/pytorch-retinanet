@@ -77,7 +77,7 @@ def main(args=None):
     if parser.depth == 18:
         retinanet = model.resnet18(num_classes=dataset_train.num_classes(), pretrained=True)
     elif parser.depth == 28: #WideResnet
-        retinanet = wide_resnet28_10(num_classes=dataset_train.num_classes(), pretrained=False)                
+        retinanet = model.wide_resnet28_10(num_classes=dataset_train.num_classes(), pretrained=False)                
     elif parser.depth == 34:
         retinanet = model.resnet34(num_classes=dataset_train.num_classes(), pretrained=True)
     elif parser.depth == 50:
