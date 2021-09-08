@@ -74,21 +74,21 @@ def main(args=None):
         dataloader_val = DataLoader(dataset_val, num_workers=3, collate_fn=collater, batch_sampler=sampler_val)
 
     # Create the model
-    if  depth == 18:
-        retinanet = resnet18(num_classes=dataset_train.num_classes(), pretrained=True)
-    elif depth == 28: # WideResnet
-        retinanet = wide_resnet28_10(num_classes=dataset_train.num_classes(), pretrained=False)            
-    elif  depth == 34:
-        retinanet = resnet34(num_classes=dataset_train.num_classes(), pretrained=True)
-    elif  depth == 50:
-        retinanet = resnet50(num_classes=dataset_train.num_classes(), pretrained=True)
-    elif  depth == 101:
-        retinanet = resnet101(num_classes=dataset_train.num_classes(), pretrained=True)
-    elif  depth == 152:
-        retinanet = resnet152(num_classes=dataset_train.num_classes(), pretrained=True)
+    if parser.depth == 18:
+        retinanet = model.resnet18(num_classes=dataset_train.num_classes(), pretrained=True)
+    elif parser.depth == 28: #WideResnet
+        retinanet = wide_resnet28_10(num_classes=dataset_train.num_classes(), pretrained=False)                
+    elif parser.depth == 34:
+        retinanet = model.resnet34(num_classes=dataset_train.num_classes(), pretrained=True)
+    elif parser.depth == 50:
+        retinanet = model.resnet50(num_classes=dataset_train.num_classes(), pretrained=True)
+    elif parser.depth == 101:
+        retinanet = model.resnet101(num_classes=dataset_train.num_classes(), pretrained=True)
+    elif parser.depth == 152:
+        retinanet = model.resnet152(num_classes=dataset_train.num_classes(), pretrained=True)
     else:
-        raise ValueError('Unsupported model depth, must be one of 18, [28], 34, 50, 101, 152')
-   
+        raise ValueError('Unsupported model depth, must be one of 18, 28[Wide], 34, 50, 101, 152')  
+        
     use_gpu = True
 
     if use_gpu:
