@@ -13,8 +13,9 @@ model_urls = {
     'resnet50': 'https://download.pytorch.org/models/resnet50-19c8e357.pth',
     'resnet101': 'https://download.pytorch.org/models/resnet101-5d3b4d8f.pth',
     'resnet152': 'https://download.pytorch.org/models/resnet152-b121ed2d.pth',
+    'wide_resnet50_2': 'https://download.pytorch.org/models/wide_resnet50_2-95faca4d.pth',
+    'wide_resnet101_2': 'https://download.pytorch.org/models/wide_resnet101_2-32ee1156.pth'
 }
-
 
 class PyramidFeatures(nn.Module):
     def __init__(self, C3_size, C4_size, C5_size, feature_size=256):
@@ -351,3 +352,45 @@ def resnet152(num_classes, pretrained=False, **kwargs):
     if pretrained:
         model.load_state_dict(model_zoo.load_url(model_urls['resnet152'], model_dir='.'), strict=False)
     return model
+
+
+### WideResnet
+
+def wide_resnet28_10(num_classes, pretrained=False, **kwargs):
+    """ Constructs a Wide ResNet-28-10 model from
+    "Wide Residual Networks" <https://arxiv.org/pdf/1605.07146.pdf>
+    Args:
+        pretrained (bool): If True, returns a model pre-trained on ImageNet
+    """
+    #kwargs['width_per_group'] = 64
+    model = ResNet(num_classes, BasicBlock, [4, 4, 4, 4], **kwargs)
+    if pretrained:
+        model.load_state_dict(model_zoo.load_url(model_urls['wide_resnet28_10'], model_dir='.'), strict=False)
+    return model
+
+# def wide_resnet50_2(num_classes, pretrained=False, **kwargs):
+#    """ Constructs a Wide ResNet-50-2 model.
+#    The model is the same as ResNet except for the bottleneck number of channels
+#    which is twice larger in every block. The number of channels in outer 1x1
+#    convolutions is the same, e.g. last block in ResNet-50 has 2048-512-2048
+#    channels, and in Wide ResNet-50-2 has 2048-1024-2048.
+#    Args:
+#        pretrained (bool): If True, returns a model pre-trained on ImageNet
+#    """
+#    model = ResNet(num_classes, Basicblock, [3, 4, 6, 3], **kwargs)
+#    if pretrained:
+#        model.load_state_dict(model_zoo.load_url(model_urls['wide_resnet50_2'], model_dir='.'), strict=False)
+#    return model
+
+#def wide_resnet101_2(num_classes, pretrained=False, **kwargs):
+#    """ Constructs a Wide ResNet-101-2 model.
+#    The model is the same as ResNet except for the bottleneck number of channels
+#    which is twice larger in every block. The number of channels in outer 1x1
+#    convolutions is the same.
+#    Args:
+#        pretrained (bool): If True, returns a model pre-trained on ImageNet
+#    """
+#    model = ResNet(num_classes, Basicblock, [3, 4, 23, 3], **kwargs)
+#    if pretrained:
+#        model.load_state_dict(model_zoo.load_url(model_urls['wide_resnet101_2'], model_dir='.'), strict=False)
+#    return model
